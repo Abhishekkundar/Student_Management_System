@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduStream | Student Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <nav class="sidebar">
+        <div class="sidebar-brand">
+            <h2>🎓 EduStream</h2>
+        </div>
+        <ul>
+            <li><a href="javascript:void(0)" onclick="showSection('dashboard')">📊 Dashboard</a></li>
+            <li><a href="javascript:void(0)" onclick="showSection('add')">➕ Register Student</a></li>
+            <li><a href="javascript:void(0)" onclick="showSection('view')">👥 View Students</a></li>
+        </ul>
+    </nav>
+
+    <main class="main">
+
+        <section id="dashboard" class="section">
+            <header class="section-header">
+                <h1>Overview</h1>
+                <p class="form-subtitle">Welcome back, Administrator.</p>
+            </header>
+
+            <div class="cards">
+                <div class="card">
+                    <p>Total Students</p>
+                    <h2 id="total">0</h2>
+                </div>
+                <div class="card">
+                    <p>Class Average</p>
+                    <h2 id="avg-percent">0%</h2>
+                </div>
+                <div class="card">
+                    <p>System Status</p>
+                    <h2 style="color: #22c55e;">Active</h2>
+                </div>
+            </div>
+        </section>
+
+        <section id="add" class="section hidden">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>Register New Student</h2>
+                    <p class="form-subtitle">Complete the steps below to enroll a student.</p>
+                </div>
+
+                <form id="studentForm" onsubmit="event.preventDefault(); addStudent();">
+                    
+                    <div class="form-group-wrapper">
+                        <h3><span class="step-icon">1</span> Academic Details</h3>
+                        <div class="form-row">
+                            <div class="form-input-group">
+                                <label for="id">Student ID</label>
+                                <input type="text" id="id" placeholder="e.g. STU-101" required>
+                            </div>
+                            <div class="form-input-group">
+                                <label for="department">Department</label>
+                                <select id="department" required>
+                                    <option value="" disabled selected>Select Dept.</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Electronics">Electronics</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group-wrapper">
+                        <h3><span class="step-icon">2</span> Personal Details</h3>
+                        <div class="form-input-group full-width">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter student name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-wrapper">
+                        <h3><span class="step-icon">3</span> Subject Performance</h3>
+                        <div id="subjectContainer">
+                            <div class="form-row subject-row">
+                                <div class="form-input-group">
+                                    <input type="text" class="sub-name" placeholder="Subject (e.g. Math)" required>
+                                </div>
+                                <div class="form-input-group">
+                                    <input type="number" class="sub-marks" placeholder="Marks" min="0" max="100" required>
+                                </div>
+                                <button type="button" class="btn-remove" onclick="this.parentElement.remove()">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-add-sub" onclick="addSubjectRow()">+ Add Subject</button>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">Register Student</button>
+                        <button type="reset" class="btn-clear" onclick="resetForm()">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="view" class="section hidden">
+            <header class="section-header">
+                <h2>All Enrolled Students</h2>
+            </header>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Total Marks</th>
+                            <th>Percentage</th>
+                            <th>Grade</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
