@@ -5,5 +5,19 @@
         "Total_marks": 190,
         "Percentage": 63,
         "Grade": "Second Class"
+    },
+    "102": {
+        "name": "abhishek",
+        "department": "Computer Science",
+        "subjects_list": [
+            {
+                "subject": "math",
+                "marks": 78
+            }
+        ],
+        "no_sub": 1,
+        "Total_marks": 78,
+        "Percentage": 78.0,
+        "Grade": "First Class"
     }
 }

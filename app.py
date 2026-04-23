@@ -55,16 +55,18 @@ def add_student():
         st_id = data.get("id")
         name = data.get("name")
         dept = data.get("department")
-        subjects_list = data.get("subjects_list") # New dynamic list
-        total_subjects = int(data.get("total_subjects"))
-        total_marks = int(data.get("total_marks"))
-
+        subjects_list = data.get("subjects_list") or []
+        marks_list= [int(sub["marks"]) for sub in subjects_list] # New dynamic list
+        # total_subjects = int(data.get("total_subjects"))
+        # total_marks = int(data.get("total_marks") or 0)
+        total_subjects =int(data.get("total_subjects")or len(subjects_list))
+        total_marks= sum(marks_list)
         if st_id in students:
             return jsonify({"error": "Student ID already exists"}), 400
 
         # Dynamic Math: Average marks per subject
         # Formula: Total / Subjects (Assuming each subject is out of 100)
-        percent = float(total_marks / total_subjects) if total_subjects > 0 else 0
+        percent = (total_marks / total_subjects) if total_subjects > 0 else 0
         grade = grade_check(percent)
 
         students[st_id] = {

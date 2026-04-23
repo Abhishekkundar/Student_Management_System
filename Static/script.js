@@ -62,17 +62,17 @@ async function addStudent() {
     // Gather dynamic subjects
     let subjects_list = [];
     let totalMarks = 0;
-    const rows = document.querySelectorAll('.subject-row');
+    let rows = document.querySelectorAll('.subject-row');
 
     rows.forEach(row => {
         let subName = row.querySelector('.sub-name').value;
         let subMarks = parseInt(row.querySelector('.sub-marks').value) || 0;
         if (subName) {
-            subjects_list.push({ [subName]: subMarks });
+            subjects_list.push({ subject:subName,
+                marks:subMarks });
             totalMarks += subMarks;
         }
     });
-
     if (!id || !name || subjects_list.length === 0) {
         alert("Please fill all fields and add at least one subject!");
         return;
@@ -86,9 +86,8 @@ async function addStudent() {
                 id, 
                 name, 
                 department, 
-                subjects_list, 
-                marks: totalMarks, 
-                subjects: rows.length 
+                subjects_list
+                
             })
         });
 
