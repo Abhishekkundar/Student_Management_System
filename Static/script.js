@@ -107,9 +107,18 @@ async function addStudent() {
 // 🔹 Helper: Update Dashboard Stats
 function updateDashboardStats(data) {
     const totalEl = document.getElementById("total");
-    if (totalEl) totalEl.innerText = Object.keys(data).length;
-    
-    // You can add more logic here for Class Average or Top Performer
+    const avgEl = document.getElementById("avg-percent");
+    const students = Object.values(data);
+
+    if (totalEl) totalEl.innerText = students.length;
+
+    if (avgEl) {
+        const totalPercentage = students.reduce((sum, student) => {
+            return sum + Number(student.Percentage || 0);
+        }, 0);
+        const average = students.length ? totalPercentage / students.length : 0;
+        avgEl.innerText = `${average.toFixed(2)}%`;
+    }
 }
 
 // 🔹 Helper: Reset Form
@@ -128,6 +137,11 @@ function showSection(id) {
 
 async function deleteStudent(id) {
     if (!confirm("Are you sure?")) return;
-    await fetch(`/api/delete/${id}`, { method: "DELETE" });
-    loadStudents();
+    const res = await fetch(`/api/delete/${id}`, { method: "DELETE" });
+    if (res.ok) {
+        loadStudents();
+    } else {
+        const error = await res.json();
+        alert(error.error);
+    }
 }

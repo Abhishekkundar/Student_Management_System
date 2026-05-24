@@ -19,5 +19,19 @@
         "Total_marks": 78,
         "Percentage": 78.0,
         "Grade": "First Class"
+    },
+    "103": {
+        "name": "abhshek",
+        "department": "Computer Science",
+        "subjects_list": [
+            {
+                "subject": "kannada",
+                "marks": 88
+            }
+        ],
+        "no_sub": 1,
+        "Total_marks": 88,
+        "Percentage": 88.0,
+        "Grade": "Distinction"
     }
 }
