@@ -71,7 +71,7 @@ def format_student(row, subjects):
     }
 
 
-@app.route("/")
+@app.route("/",methods=["GET"])
 def login():
     return render_template("login.html")
 @app.route("/dashboard")
