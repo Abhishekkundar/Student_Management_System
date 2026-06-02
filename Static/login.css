@@ -190,61 +190,54 @@ body{
 .login-btn:hover{
   background:#1d4ed8;
 }
-.role-select{
-    padding: 5px;
-    width:100%;
-    border-radius: 14px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
+.role-select-container{
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.role-select-container label{
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: #111827;
+}
+
+.role-buttons{
     display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.role-btn{
+    flex: 1;
+    padding: 14px 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 14px;
+    background: white;
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
 }
-#teacher{
-    margin:10px;
-    border: none;
-    transition: 0.3s;
-    padding: 10px;
-    width:100px;
-    background:rgb(40, 84, 216);
-    color: white;
-    border-radius: 14px;
-    cursor: pointer;
 
+.role-btn i{
+    font-size: 20px;
 }
-#student{
-    margin:10px;
-    border: none;
-    transition: 0.3s;
-    padding: 10px;
-    width:100px;
-    background:rgb(40, 84, 216);
-    color: white;
-    border-radius: 14px;
-    cursor: pointer;
 
+.role-btn:hover{
+    border-color: #2563eb;
+    color: #2563eb;
 }
-#admin{
-    margin:10px;
-    border: none;
-    padding: 10px;
-    width:100px;
-    background:rgb(40, 84, 216);
-    color: white;
-    border-radius: 14px;
-    cursor: pointer;
 
-}
-#admin:hover{
-    background: #3b82f6;
-}
-#teacher:hover{
-    background: #3b82f6;
-}
-#student:hover{
-    background: #3b82f6;
+.role-btn.active{
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
 }
 .footer-text{
     text-align: center;

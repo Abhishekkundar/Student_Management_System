@@ -1,3 +1,41 @@
+// 🔹 Select Role for Login
+function selectRole(role) {
+    document.getElementById('roleInput').value = role;
+    
+    // Remove active class from all buttons
+    document.querySelectorAll('.role-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Add active class to selected button
+    document.querySelector(`[data-role="${role}"]`).classList.add('active');
+}
+
+// 🔹 Validate Login Form
+function validateForm() {
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const password = document.querySelector('input[name="password"]').value.trim();
+    const role = document.getElementById('roleInput').value;
+
+    if (!email) {
+        alert('Please enter your email address');
+        return false;
+    }
+    
+    if (!password) {
+        alert('Please enter your password');
+        return false;
+    }
+    
+    if (!role) {
+        alert('Please select a role');
+        return false;
+    }
+    
+    alert(`Login successful as ${role}!`);
+    return true;
+}
+
 // Load students on page load
 window.onload = function () {
     if (document.getElementById("tableBody")) {
